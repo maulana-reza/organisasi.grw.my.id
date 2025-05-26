@@ -19,14 +19,14 @@
                 class="w-full 2xl:h-[90vh] lg:h-[80vh] h-[70vh] max-[320px]:h-[50vh] flex items-center px-2 2xl:max-w-lg xl:max-w-lg lg:max-w-lg lg:w-1/2 lg:mx-0 md:max-w-lg md:w-1/2 md:mx-0 2xl:w-1/2 xl:w-1/2 sm:items-center"
                 data-aos="fade-up" data-aos-duration="2000">
                 <div class="text-center 2xl:text-left xl:text-left lg:text-left md:text-left h-72">
-                    <span class="text-[#7963e0] text-[18px] font-bold">organisasi</span>
+                    <span class="text-[#7963e0] text-[18px] font-bold">ORGANISASI</span>
                     @php($homepage = \App\Helpers\Homepage::homepage())
                     <h1
                         class="text-dark-800 2xl:text-[60px] xl:text-[55px] lg:text-[50px] md:text-[45px] text-[40px] font-bold">
                         {{$homepage['nama_organisasi']}}
                     </h1>
                     <h2 class="py-2 mt-2 text-dark-800 text-[20px] font-bold">
-                        <smal>Sejak</smal>
+                        <smal>SEJAK TAHUN</smal>
                         <p>
                             {{$homepage['tahun_berdiri']}}
                         </p>
@@ -47,7 +47,7 @@
     </section>
 
     <!-- service -->
-    <section id="service" class="2xl:py-[80px] py-[70px] bg-white relative">
+    <section id="organisasi" class="2xl:py-[80px] py-[70px] bg-white relative">
         <div data-aos="fade-up" data-aos-duration="2000" data-aos-delay="300">
             <img src="{{asset('assets/borox')}}/assets/img/shape/shape-6.png" alt="shape"
                  class="absolute w-12 h-12 top-28 right-40">
