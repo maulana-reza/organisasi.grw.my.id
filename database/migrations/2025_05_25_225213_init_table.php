@@ -21,35 +21,36 @@ return new class extends Migration {
             $table->text('deskripsi')->nullable();
             $table->timestamps();
         });
-        Schema::create('organisasi_naungans', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('organisasi_id')->nullable()->constrained('organisasis')->nullOnDelete();
-            $table->foreignId('provinsi_id')->nullable()->constrained('provinsis')->nullOnDelete();
-            $table->integer('jumlah_anggota')->nullable();
-            $table->timestamps();
-        });
+
         Schema::create('provinsis', function (Blueprint $table) {
             $table->id('id_provinsi');
             $table->string('nama_provinsi')->nullable();
             $table->timestamps();
         });
+        Schema::create('organisasi_naungans', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('organisasi_id')->nullable()->constrained('organisasis','id_organisasi')->nullOnDelete();
+            $table->foreignId('provinsi_id')->nullable()->constrained('provinsis','id_provinsi')->nullOnDelete();
+            $table->integer('jumlah_anggota')->nullable();
+            $table->timestamps();
+        });
         Schema::create('kabupaten_kotas', function (Blueprint $table) {
             $table->id('id_kabupaten_kota');
-            $table->foreignId('provinsi_id')->nullable()->constrained('provinsis')->nullOnDelete();
+            $table->foreignId('provinsi_id')->nullable()->constrained('provinsis','id_provinsi')->nullOnDelete();
             $table->string('nama_kabupaten')->nullable();
             $table->timestamps();
         });
         Schema::create('alamat_kantors', function (Blueprint $table) {
             $table->id('id_alamat_kantor');
-            $table->foreignId('provinsi_id')->nullable()->constrained('provinsis')->nullOnDelete();
-            $table->foreignId('kabupaten_kota_id')->nullable()->constrained('kabupaten_kotas')->nullOnDelete();
+            $table->foreignId('provinsi_id')->nullable()->constrained('provinsis','id_provinsi')->nullOnDelete();
+            $table->foreignId('kabupaten_kota_id')->nullable()->constrained('kabupaten_kotas','id_kabupaten_kota')->nullOnDelete();
             $table->text('alamat')->nullable();
             $table->enum('type', ['kantor kabupaten', 'kantor provinsi', 'kantor pusat'])->nullable();
             $table->timestamps();
         });
         Schema::create('anggotas', function (Blueprint $table) {
             $table->id('id_anggota');
-            $table->foreignId('organisasi_id')->nullable()->constrained('organisasis')->nullOnDelete();
+            $table->foreignId('organisasi_id')->nullable()->constrained('organisasis','id_organisasi')->nullOnDelete();
             $table->string('nama_anggota')->nullable();
             $table->text('alamat')->nullable();
             $table->string('foto')->nullable();
@@ -63,10 +64,10 @@ return new class extends Migration {
                 'ketua umum', 'ketua wilayah', 'sekretaris', 'wakil sekretaris',
                 'bendahara', 'wakil bendahara', 'bidang humas', 'bidang sosial', 'bidang pendidikan', 'anggota'
             ])->nullable();
-            $table->foreignId('provinsi_id')->nullable()->constrained('provinsis')->nullOnDelete();
-            $table->foreignId('kabupaten_kota_id')->nullable()->constrained('kabupaten_kotas')->nullOnDelete();
-            $table->foreignId('anggota_id')->nullable()->constrained('anggotas')->nullOnDelete();
-            $table->foreignId('alamat_kantor_id')->nullable()->constrained('alamat_kantors')->nullOnDelete();
+            $table->foreignId('provinsi_id')->nullable()->constrained('provinsis','id_provinsi')->nullOnDelete();
+            $table->foreignId('kabupaten_kota_id')->nullable()->constrained('kabupaten_kotas','id_kabupaten_kota')->nullOnDelete();
+            $table->foreignId('anggota_id')->nullable()->constrained('anggotas','id_anggota')->nullOnDelete();
+            $table->foreignId('alamat_kantor_id')->nullable()->constrained('alamat_kantors','id_alamat_kantor')->nullOnDelete();
             $table->timestamps();
         });
 
