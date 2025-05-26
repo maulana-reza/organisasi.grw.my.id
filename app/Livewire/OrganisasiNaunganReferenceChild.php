@@ -93,7 +93,7 @@ class OrganisasiNaunganReferenceChild extends Component
         $this->dispatch('show', 'Record Deleted Successfully')->to('livewire-toast');
 
     }
- 
+
     #[On('showCreateForm')]
     public function showCreateForm(): void
     {
@@ -110,16 +110,17 @@ class OrganisasiNaunganReferenceChild extends Component
     {
         $this->validate();
         $item = OrganisasiNaungan::create([
-            'jumlah_anggota' => $this->item['jumlah_anggota'] ?? '', 
-            'organisasi_id' => $this->item['organisasi_id'] ?? 0, 
-            'provinsi_id' => $this->item['provinsi_id'] ?? 0, 
+            'nama_anggota' => $this->item['nama_anggota'] ?? '',
+            'jumlah_anggota' => $this->item['jumlah_anggota'] ?? '',
+            'organisasi_id' => $this->item['organisasi_id'] ?? null,
+            'provinsi_id' => $this->item['provinsi_id'] ?? null,
         ]);
         $this->confirmingItemCreation = false;
         $this->dispatch('refresh')->to('organisasi-naungan-reference');
         $this->dispatch('show', 'Record Added Successfully')->to('livewire-toast');
 
     }
-        
+
     #[On('showEditForm')]
     public function showEditForm(OrganisasiNaungan $organisasinaungan): void
     {
@@ -137,7 +138,7 @@ class OrganisasiNaunganReferenceChild extends Component
     {
         $this->validate();
         $item = $this->organisasinaungan->update([
-            'jumlah_anggota' => $this->item['jumlah_anggota'] ?? '', 
+            'jumlah_anggota' => $this->item['jumlah_anggota'] ?? '',
          ]);
         $this->confirmingItemEdit = false;
         $this->primaryKey = '';

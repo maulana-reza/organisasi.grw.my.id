@@ -42,8 +42,7 @@
             </div>
             <div class="grid grid-cols-2 gap-8">
 
-                <div class="grid grid-cols-3">
-                    <div class="mt-4">
+                <div class="mt-4">
                         <x-tall-crud-label>Provinsi</x-tall-crud-label>
                         <x-tall-crud-select class="block mt-1 w-full" wire:model="item.provinsi_id">
                             <option value="">Please Select</option>
@@ -54,7 +53,6 @@
                         @error('item.provinsi_id')
                         <x-tall-crud-error-message>{{$message}}</x-tall-crud-error-message> @enderror
                     </div>
-                </div>
 
                 <div class="grid grid-cols-3">
                     <div class="mt-4">
@@ -105,8 +103,7 @@
             </div>
             <div class="grid grid-cols-2 gap-8">
 
-                <div class="grid grid-cols-3">
-                    <div class="mt-4">
+                <div class="mt-4">
                         <x-tall-crud-label>Provinsi</x-tall-crud-label>
                         <x-tall-crud-select class="block mt-1 w-full" wire:model="item.provinsi_id">
                             <option value="">Please Select</option>
@@ -117,7 +114,6 @@
                         @error('item.provinsi_id')
                         <x-tall-crud-error-message>{{$message}}</x-tall-crud-error-message> @enderror
                     </div>
-                </div>
 
                 <div class="grid grid-cols-3">
                     <div class="mt-4">
