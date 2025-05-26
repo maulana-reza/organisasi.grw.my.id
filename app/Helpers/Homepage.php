@@ -12,7 +12,7 @@ class Homepage
     public static function homepage()
     {
         $organisasi = Organisasi::first();
-        $result = $organisasi->toArray();
+        $result = $organisasi ? $organisasi->toArray() : [];
         $result['ketua'] = $organisasi->ketua ?: [
             'nama_anggota' => 'N/A',
             'alamat' => 'N/A',
@@ -22,7 +22,7 @@ class Homepage
             'no_hp' => 'N/A',
             'email' => 'N/A',
         ];
-        return $organisasi ?  : [
+        return $organisasi ?: [
             'nama_organisasi' => 'N/A',
             'tahun_berdiri' => 'N/A',
             'peran' => 'N/A',
@@ -48,6 +48,7 @@ class Homepage
     {
         return OrganisasiNaungan::all();
     }
+
     public static function cakupanWilayah()
     {
         return AlamatKantor::all();
