@@ -13,7 +13,7 @@ class Homepage
     {
         $organisasi = Organisasi::first();
         $result = $organisasi ? $organisasi->toArray() : [];
-        $result['ketua'] = $organisasi->ketua ?: [
+        $result['ketua'] = $organisasi ? $organisasi->ketua : [
             'nama_anggota' => 'N/A',
             'alamat' => 'N/A',
             'alamat_kantor' => 'N/A',
