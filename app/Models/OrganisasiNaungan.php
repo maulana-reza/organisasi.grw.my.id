@@ -9,7 +9,7 @@ class OrganisasiNaungan extends Model
         'organisasi_id',
         'provinsi_id',
         'jumlah_anggota',
-        'nama_organiasi'
+        'nama_organisasi'
     ];
 
     public function organisasi()

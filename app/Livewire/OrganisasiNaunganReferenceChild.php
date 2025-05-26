@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Livewire;
+
 use Livewire\Attributes\On;
 use Livewire\Component;
 use \Illuminate\View\View;
@@ -11,7 +12,7 @@ use App\Models\Provinsi;
 class OrganisasiNaunganReferenceChild extends Component
 {
 
-    public $item=[];
+    public $item = [];
 
     /**
      * @var array
@@ -65,7 +66,7 @@ class OrganisasiNaunganReferenceChild extends Component
      */
     public $confirmingItemCreation = false;
 
-    public $organisasinaungan ;
+    public $organisasinaungan;
 
     /**
      * @var bool
@@ -76,6 +77,7 @@ class OrganisasiNaunganReferenceChild extends Component
     {
         return view('livewire.organisasi-naungan-reference-child');
     }
+
     #[On('showDeleteForm')]
     public function showDeleteForm(OrganisasiNaungan $organisasinaungan): void
     {
@@ -110,7 +112,7 @@ class OrganisasiNaunganReferenceChild extends Component
     {
         $this->validate();
         $item = OrganisasiNaungan::create([
-            'nama_anggota' => $this->item['nama_anggota'] ?? '',
+            'nama_organisasi' => $this->item['nama_organisasi'] ?? '',
             'jumlah_anggota' => $this->item['jumlah_anggota'] ?? '',
             'organisasi_id' => $this->item['organisasi_id'] ?? null,
             'provinsi_id' => $this->item['provinsi_id'] ?? null,
@@ -138,8 +140,11 @@ class OrganisasiNaunganReferenceChild extends Component
     {
         $this->validate();
         $item = $this->organisasinaungan->update([
+            'nama_organisasi' => $this->item['nama_organisasi'] ?? '',
             'jumlah_anggota' => $this->item['jumlah_anggota'] ?? '',
-         ]);
+            'organisasi_id' => $this->item['organisasi_id'] ?? null,
+            'provinsi_id' => $this->item['provinsi_id'] ?? null,
+        ]);
         $this->confirmingItemEdit = false;
         $this->primaryKey = '';
         $this->dispatch('refresh')->to('organisasi-naungan-reference');

@@ -21,7 +21,7 @@
         <table class="w-full my-8 whitespace-nowrap" wire:loading.class.delay="opacity-50">
             <thead class="bg-secondary text-gray-100 font-bold">
                 <tr class="text-left font-bold bg-blue-400">
-                <td class="px-3 py-2" >Nama Anggota</td>
+                <td class="px-3 py-2" >Nama Organisasi</td>
                 <td class="px-3 py-2" >Jumlah Anggota</td>
                 <td class="px-3 py-2" >Dinaungi oleh organisasi</td>
                 <td class="px-3 py-2" >Actions</td>
@@ -30,7 +30,7 @@
             <tbody class="divide-y divide-blue-400">
             @foreach($results as $result)
                 <tr class="hover:bg-blue-300 {{ ($loop->even ) ? "bg-blue-100" : ""}}">
-                    <td class="px-3 py-2" >{{ $result->nama_anggota }}</td>
+                    <td class="px-3 py-2" >{{ $result->nama_organisasi }}</td>
                     <td class="px-3 py-2" >{{ $result->jumlah_anggota }}</td>
                     <td class="px-3 py-2" >{{ $result->organisasi->nama_organisasi }}</td>
                     <td class="px-3 py-2" >

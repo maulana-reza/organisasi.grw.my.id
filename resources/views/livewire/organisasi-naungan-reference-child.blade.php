@@ -25,7 +25,7 @@
                 <div class="mt-4">
                     <x-tall-crud-label>Nama Organisasi</x-tall-crud-label>
                     <x-tall-crud-input class="block mt-1 w-full" type="text" wire:model="item.nama_organisasi"/>
-                    @error('item.jumlah_anggota')
+                    @error('item.nama_organisasi')
                     <x-tall-crud-error-message>{{$message}}</x-tall-crud-error-message> @enderror
                 </div>
                 <div class="mt-4">
@@ -74,7 +74,7 @@
                 <div class="mt-4">
                     <x-tall-crud-label>Nama Organisasi</x-tall-crud-label>
                     <x-tall-crud-input class="block mt-1 w-full" type="text" wire:model="item.nama_organisasi"/>
-                    @error('item.jumlah_anggota')
+                    @error('item.nama_organisasi')
                     <x-tall-crud-error-message>{{$message}}</x-tall-crud-error-message> @enderror
                 </div>
                 <div class="mt-4">

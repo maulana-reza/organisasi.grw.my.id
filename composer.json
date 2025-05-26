@@ -22,6 +22,7 @@
         "laravel/jetstream": "^5.1",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
+        "laravolt/indonesia": "^0.36.0",
         "livewire/livewire": "^3.0",
         "waziri123/waziri-tall-crud-generator": "dev-master"
     },

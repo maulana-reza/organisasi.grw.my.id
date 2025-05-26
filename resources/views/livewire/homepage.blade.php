@@ -14,9 +14,8 @@
              src="{{asset('assets/borox')}}/assets/img/shape/shape-5.png"
              alt="shape-5">
         <div
-            class="flex flex-wrap justify-between items-center mx-auto mx-auto 2xl:max-w-[1320px] xl:max-w-[1140px] lg:max-w-[960px] md:max-w-[720px] sm:max-w-[540px] py-[80px] px-4">
-            <div
-                class="w-full 2xl:h-[90vh] lg:h-[80vh] h-[70vh] max-[320px]:h-[50vh] flex items-center px-2 2xl:max-w-lg xl:max-w-lg lg:max-w-lg lg:w-1/2 lg:mx-0 md:max-w-lg md:w-1/2 md:mx-0 2xl:w-1/2 xl:w-1/2 sm:items-center"
+            class="flex justify-between items-center mx-auto mx-auto 2xl:max-w-[1320px] xl:max-w-[1140px] lg:max-w-[960px] md:max-w-[720px] sm:max-w-[540px] py-[80px] px-4">
+            <div class="flex-grow-1 2xl:h-[90vh] lg:h-[80vh] h-[70vh] max-[320px]:h-[50vh] flex items-center px-2 lg:mx-0 md:mx-0 sm:items-center"
                 data-aos="fade-up" data-aos-duration="2000">
                 <div class="text-center 2xl:text-left xl:text-left lg:text-left md:text-left h-72">
                     <span class="text-[#7963e0] text-[18px] font-bold">ORGANISASI</span>
@@ -36,8 +35,8 @@
                     </p>
                 </div>
             </div>
-            <div class="w-1/2 hidden px-2 2xl:block xl:block lg:block md:block z-10">
-                <img src="{{asset('banner.png')}}" alt="girl" class="max-h-full">
+            <div class="w-full hidden px-2 2xl:block xl:block lg:block md:block z-10">
+                <img src="{{asset('banner.png')}}" alt="girl" class="max-h-full w-full">
             </div>
         </div>
         <div class="relative">
@@ -65,7 +64,7 @@
                          data-aos-duration="2000" data-aos-delay="300">
                         <div class="pr-6 border-r border-[#7963e0] max-[480px]:hidden">
                             <h6 class="2xl:text-[50px] lg:text-[40px] text-[35px] font-bold text-[#7963e0] 2xl:w-[60px] xl:w-[60px] lg:w-[50px] w-[40px] opacity-50">
-                                {{ str_pad($key + 1, 3, '0', STR_PAD_LEFT) }}
+                                {{ str_pad($key + 1, 2, '0', STR_PAD_LEFT) }}
                             </h6>
                         </div>
                         <div class="pl-6 border-l">
@@ -157,8 +156,15 @@
                         </div>
                         <div class="bottom pt-[20px]">
                             <p class="text-[16px] leading-[28px] font-bold">Address :</p>
-                            <span
-                                class="detail text-[14px] leading-[28px] text-[#777]">{{$ketua['alamat_kantor']}}</span>
+                            <span class="detail text-[14px] leading-[28px] text-[#777]">{{$ketua['alamat_kantor']}}</span>
+                        </div>
+                        <div class="bottom pt-[20px]">
+                            <p class="text-[16px] leading-[28px] font-bold">Visi :</p>
+                            <span class="detail text-[14px] leading-[28px] text-[#777]">{{$homepage['peran']}}</span>
+                        </div>
+                        <div class="bottom pt-[20px]">
+                            <p class="text-[16px] leading-[28px] font-bold">Misi :</p>
+                            <span class="detail text-[14px] leading-[28px] text-[#777]">{{$homepage['tujuan']}}</span>
                         </div>
                     </div>
                 </div>

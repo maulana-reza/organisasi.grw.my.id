@@ -149,10 +149,12 @@ class AnggotaReferenceChild extends Component
         $item = $this->anggota->update([
             'nama_anggota' => $this->item['nama_anggota'] ?? '',
             'alamat' => $this->item['alamat'] ?? '',
-            'foto' => $this->item['foto'] ?? '',
+            'foto' => $this->item['foto'] ? $this->item['foto']->store('anggota', 'public') : '',
             'no_hp' => $this->item['no_hp'] ?? '',
             'email' => $this->item['email'] ?? '',
+            'organisasi_id' => $this->item['organisasi_id'] ?? 0,
         ]);
+
         $this->confirmingItemEdit = false;
         $this->primaryKey = '';
         $this->dispatch('refresh')->to('anggota-reference');

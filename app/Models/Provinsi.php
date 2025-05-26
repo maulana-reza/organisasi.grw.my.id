@@ -7,7 +7,7 @@ class Provinsi extends Model
 {
     protected $primaryKey = 'id_provinsi';
 
-    protected $fillable = ['nama_provinsi'];
+    protected $fillable = ['id_provinsi','nama_provinsi'];
 
     public function kabupatenKotas()
     {
