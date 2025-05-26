@@ -38,8 +38,8 @@ class AlamatKantorReferenceChild extends Component
     protected $rules = [
         'item.alamat' => '',
         'item.type' => '',
-        'item.provinsi_id' => 'required',
-        'item.kabupaten_kota_id' => 'required',
+        'item.provinsi_id' => 'nullable',
+        'item.kabupaten_kota_id' => 'nullable',
     ];
 
     /**
@@ -95,7 +95,7 @@ class AlamatKantorReferenceChild extends Component
         $this->dispatch('show', 'Record Deleted Successfully')->to('livewire-toast');
 
     }
- 
+
     #[On('showCreateForm')]
     public function showCreateForm(): void
     {
@@ -112,17 +112,17 @@ class AlamatKantorReferenceChild extends Component
     {
         $this->validate();
         $item = AlamatKantor::create([
-            'alamat' => $this->item['alamat'] ?? '', 
-            'type' => $this->item['type'] ?? '', 
-            'provinsi_id' => $this->item['provinsi_id'] ?? 0, 
-            'kabupaten_kota_id' => $this->item['kabupaten_kota_id'] ?? 0, 
+            'alamat' => $this->item['alamat'] ?? '',
+            'type' => $this->item['type'] ?? '',
+            'provinsi_id' => $this->item['provinsi_id'] ?? null,
+            'kabupaten_kota_id' => $this->item['kabupaten_kota_id'] ?? null,
         ]);
         $this->confirmingItemCreation = false;
         $this->dispatch('refresh')->to('alamat-kantor-reference');
         $this->dispatch('show', 'Record Added Successfully')->to('livewire-toast');
 
     }
-        
+
     #[On('showEditForm')]
     public function showEditForm(AlamatKantor $alamatkantor): void
     {
@@ -140,8 +140,8 @@ class AlamatKantorReferenceChild extends Component
     {
         $this->validate();
         $item = $this->alamatkantor->update([
-            'alamat' => $this->item['alamat'] ?? '', 
-            'type' => $this->item['type'] ?? '', 
+            'alamat' => $this->item['alamat'] ?? '',
+            'type' => $this->item['type'] ?? '',
          ]);
         $this->confirmingItemEdit = false;
         $this->primaryKey = '';

@@ -4,7 +4,7 @@
         <div class="text-2xl">Anggota</div>
         <button type="submit" wire:click="$dispatchTo('anggota-reference-child', 'showCreateForm');" class="text-blue-500">
             <x-tall-crud-icon-add />
-        </button> 
+        </button>
     </div>
 
     <div class="mt-6">
@@ -14,7 +14,6 @@
                 <x-tall-crud-filter :filters=$filters />
             </div>
             <div class="flex">
-
                 <x-tall-crud-page-dropdown />
             </div>
         </div>
@@ -35,7 +34,7 @@
                 <tr class="hover:bg-blue-300 {{ ($loop->even ) ? "bg-blue-100" : ""}}">
                     <td class="px-3 py-2" >{{ $result->nama_anggota }}</td>
                     <td class="px-3 py-2" >{{ $result->alamat }}</td>
-                    <td class="px-3 py-2" >{{ $result->foto }}</td>
+                    <td class="px-3 py-2" ><img src="{{asset('storage/'.$result->foto) }}" class="h-10"/></td>
                     <td class="px-3 py-2" >{{ $result->no_hp }}</td>
                     <td class="px-3 py-2" >{{ $result->email }}</td>
                     <td class="px-3 py-2" >{{ $result->jabatans->implode('jabatan', ',') }}</td>

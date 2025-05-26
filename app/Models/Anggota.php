@@ -11,6 +11,9 @@ class Anggota extends Model
         'organisasi_id', 'nama_anggota', 'alamat',
         'foto', 'no_hp', 'email',
     ];
+    protected $appends = [
+        'alamat_kantor',
+    ];
 
     public function organisasi()
     {
@@ -20,5 +23,10 @@ class Anggota extends Model
     public function jabatans()
     {
         return $this->hasMany(Jabatan::class, 'anggota_id');
+    }
+    public function getAlamatKantorAttribute()
+    {
+        $jabatan = $this->jabatans()->first();
+        return $jabatan ? $jabatan->alamatKantor->alamat : 'N/A';
     }
 }

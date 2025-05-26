@@ -13,6 +13,14 @@ class AlamatKantor extends Model
         'alamat',
         'type'
     ];
+    const OPT = [
+        self::KAB => 'Kantor Kabupaten',
+        self::PROV => 'Kantor Provinsi',
+        self::PUSAT => 'Kantor Pusat'
+    ];
+    const KAB = 'kantor kabupaten';
+    const PROV = 'kantor provinsi';
+    const PUSAT = 'kantor pusat';
 
     public function provinsi()
     {
@@ -22,6 +30,21 @@ class AlamatKantor extends Model
     public function kabupatenKota()
     {
         return $this->belongsTo(KabupatenKota::class, 'kabupaten_kota_id');
+    }
+
+    public function jabatan()
+    {
+        return $this->hasMany(Jabatan::class, 'alamat_kantor_id');
+
+    }
+
+    public function ketuaUmum()
+    {
+        $jabatan = $this->jabatan()
+            ->where('jabatan', 'ketua umum')
+            ->first();
+        return $jabatan ? $jabatan->anggota->nama_anggota : 'N/A';
+
     }
 }
 

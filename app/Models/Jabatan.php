@@ -7,12 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class Jabatan extends Model
 {
     const JABATAN_OPTIONS = [
-                    'ketua umum', 'ketua wilayah', 'sekretaris', 'wakil sekretaris',
-                    'bendahara', 'wakil bendahara', 'bidang humas', 'bidang sosial', 'bidang pendidikan'
-                ];
+        'ketua umum', 'ketua wilayah', 'sekretaris', 'wakil sekretaris',
+        'bendahara', 'wakil bendahara', 'bidang humas', 'bidang sosial', 'bidang pendidikan'
+    ];
+    const JABATAN_OPTIONS_ALL = [
+        'ketua umum', 'ketua wilayah', 'sekretaris', 'wakil sekretaris',
+        'bendahara', 'wakil bendahara', 'bidang humas', 'bidang sosial', 'bidang pendidikan', 'anggota'
+    ];
     protected $fillable = [
-        'jabatan', 'provinsi_id', 'kabupaten_kota_id',
-        'anggota_id', 'alamat_kantor_id'
+        'jabatan',
+        'provinsi_id',
+        'kabupaten_kota_id',
+        'anggota_id',
+        'alamat_kantor_id'
     ];
 
     public function anggota()

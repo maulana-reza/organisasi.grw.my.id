@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 class OrganisasiNaungan extends Model
 {
     protected $fillable = [
-        'organisasi_id', 'provinsi_id', 'jumlah_anggota'
+        'organisasi_id',
+        'provinsi_id',
+        'jumlah_anggota',
+        'nama_organiasi'
     ];
 
     public function organisasi()

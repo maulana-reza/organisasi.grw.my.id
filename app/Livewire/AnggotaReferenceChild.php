@@ -1,16 +1,21 @@
 <?php
 
 namespace App\Livewire;
+
+use App\Models\Jabatan;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use \Illuminate\View\View;
 use App\Models\Anggota;
 use App\Models\Organisasi;
+use Livewire\WithFileUploads;
 
 class AnggotaReferenceChild extends Component
 {
 
-    public $item=[];
+    use WithFileUploads;
+
+    public $item = [];
 
     /**
      * @var array
@@ -65,7 +70,7 @@ class AnggotaReferenceChild extends Component
      */
     public $confirmingItemCreation = false;
 
-    public $anggota ;
+    public $anggota;
 
     /**
      * @var bool
@@ -76,6 +81,7 @@ class AnggotaReferenceChild extends Component
     {
         return view('livewire.anggota-reference-child');
     }
+
     #[On('showDeleteForm')]
     public function showDeleteForm(Anggota $anggota): void
     {
@@ -93,7 +99,7 @@ class AnggotaReferenceChild extends Component
         $this->dispatch('show', 'Record Deleted Successfully')->to('livewire-toast');
 
     }
- 
+
     #[On('showCreateForm')]
     public function showCreateForm(): void
     {
@@ -108,19 +114,24 @@ class AnggotaReferenceChild extends Component
     {
         $this->validate();
         $item = Anggota::create([
-            'nama_anggota' => $this->item['nama_anggota'] ?? '', 
-            'alamat' => $this->item['alamat'] ?? '', 
-            'foto' => $this->item['foto'] ?? '', 
-            'no_hp' => $this->item['no_hp'] ?? '', 
-            'email' => $this->item['email'] ?? '', 
-            'organisasi_id' => $this->item['organisasi_id'] ?? 0, 
+            'nama_anggota' => $this->item['nama_anggota'] ?? '',
+            'alamat' => $this->item['alamat'] ?? '',
+            'foto' => $this->item['foto'] ? $this->item['foto']->store('anggota', 'public') : '',
+            'no_hp' => $this->item['no_hp'] ?? '',
+            'email' => $this->item['email'] ?? '',
+            'organisasi_id' => $this->item['organisasi_id'] ?? 0,
+        ]);
+        $jabatan = Jabatan::create([
+            'jabatan' => $this->item['jabatan'] ?: 'anggota',
+            'anggota_id' => $item->id_anggota,
+            'alamat_kantor_id' => $this->item['alamat_kantor_id'] ?? 0,
         ]);
         $this->confirmingItemCreation = false;
         $this->dispatch('refresh')->to('anggota-reference');
         $this->dispatch('show', 'Record Added Successfully')->to('livewire-toast');
 
     }
-        
+
     #[On('showEditForm')]
     public function showEditForm(Anggota $anggota): void
     {
@@ -136,12 +147,12 @@ class AnggotaReferenceChild extends Component
     {
         $this->validate();
         $item = $this->anggota->update([
-            'nama_anggota' => $this->item['nama_anggota'] ?? '', 
-            'alamat' => $this->item['alamat'] ?? '', 
-            'foto' => $this->item['foto'] ?? '', 
-            'no_hp' => $this->item['no_hp'] ?? '', 
-            'email' => $this->item['email'] ?? '', 
-         ]);
+            'nama_anggota' => $this->item['nama_anggota'] ?? '',
+            'alamat' => $this->item['alamat'] ?? '',
+            'foto' => $this->item['foto'] ?? '',
+            'no_hp' => $this->item['no_hp'] ?? '',
+            'email' => $this->item['email'] ?? '',
+        ]);
         $this->confirmingItemEdit = false;
         $this->primaryKey = '';
         $this->dispatch('refresh')->to('anggota-reference');

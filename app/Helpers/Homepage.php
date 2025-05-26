@@ -12,7 +12,17 @@ class Homepage
     public static function homepage()
     {
         $organisasi = Organisasi::first();
-        return $organisasi ? $organisasi->toArray() : [
+        $result = $organisasi->toArray();
+        $result['ketua'] = $organisasi->ketua ?: [
+            'nama_anggota' => 'N/A',
+            'alamat' => 'N/A',
+            'alamat_kantor' => 'N/A',
+            'jabatan' => 'N/A',
+            'foto' => 'N/A',
+            'no_hp' => 'N/A',
+            'email' => 'N/A',
+        ];
+        return $organisasi ?  : [
             'nama_organisasi' => 'N/A',
             'tahun_berdiri' => 'N/A',
             'peran' => 'N/A',
